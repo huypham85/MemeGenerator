@@ -36,7 +36,6 @@
 /* Begin PBXFileReference section */
 		2D0D49262CE8851700217381 /* CoreModule */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CoreModule; sourceTree = "<group>"; };
 		2D0D49292CE89E8000217381 /* ImagePickerModule */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ImagePickerModule; sourceTree = "<group>"; };
-		2D0D492A2CE89F8D00217381 /* ProjectListModule */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ProjectListModule; sourceTree = "<group>"; };
 		69D2CE4B2CE5B5360096B1AD /* MemeGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69D2CE4E2CE5B5360096B1AD /* MemeGeneratorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeGeneratorApp.swift; sourceTree = "<group>"; };
 		69D2CE502CE5B5360096B1AD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -77,7 +76,6 @@
 		2D0D49252CE883C300217381 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
-				2D0D492A2CE89F8D00217381 /* ProjectListModule */,
 				2D0D49292CE89E8000217381 /* ImagePickerModule */,
 				2D0D49262CE8851700217381 /* CoreModule */,
 			);
