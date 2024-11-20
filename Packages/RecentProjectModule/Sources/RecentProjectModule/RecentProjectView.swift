@@ -8,11 +8,38 @@
 import SwiftUI
 
 struct RecentProjectView: View {
+    private var imageList: some View {
+        ForEach(0..<50, id: \.self) { _ in
+            Rectangle()
+                .fill(Color.gray)
+                .clipShape(RoundedRectangle(cornerRadius: 15))
+                .frame(width: 180, height: CGFloat.random(in: 180...300), alignment: .center)
+        }
+    }
+    
+    
+    private var homeGridItems: [GridItem] = [
+        .init(.fixed(150))
+    ]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+//        Image("demo")
+//            .resizable()
+//            .frame(width: 300, height: 300)
+
+        ScrollView {
+            HStack(alignment: .top) {
+                LazyVGrid(columns: homeGridItems) {
+                    imageList
+                }
+                LazyVGrid(columns: homeGridItems) {
+                    imageList
+                }
+            }
+        }
     }
 }
 
 #Preview {
-    SwiftUIView()
+    RecentProjectView()
 }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2DAF419E2CEE2E200006AA20 /* CoreModule in Frameworks */ = {isa = PBXBuildFile; productRef = 2DAF419D2CEE2E200006AA20 /* CoreModule */; };
+		2DAF41A02CEE2E200006AA20 /* ImagePickerModule in Frameworks */ = {isa = PBXBuildFile; productRef = 2DAF419F2CEE2E200006AA20 /* ImagePickerModule */; };
+		2DAF41A22CEE2E200006AA20 /* RecentProjectModule in Frameworks */ = {isa = PBXBuildFile; productRef = 2DAF41A12CEE2E200006AA20 /* RecentProjectModule */; };
 		69D2CE4F2CE5B5360096B1AD /* MemeGeneratorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D2CE4E2CE5B5360096B1AD /* MemeGeneratorApp.swift */; };
 		69D2CE512CE5B5360096B1AD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D2CE502CE5B5360096B1AD /* ContentView.swift */; };
 		69D2CE532CE5B5380096B1AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69D2CE522CE5B5380096B1AD /* Assets.xcassets */; };
@@ -54,6 +57,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DAF41A22CEE2E200006AA20 /* RecentProjectModule in Frameworks */,
+				2DAF41A02CEE2E200006AA20 /* ImagePickerModule in Frameworks */,
+				2DAF419E2CEE2E200006AA20 /* CoreModule in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +90,13 @@
 			path = Packages;
 			sourceTree = "<group>";
 		};
+		2DAF419C2CEE2E200006AA20 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		69D2CE422CE5B5360096B1AD = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +105,7 @@
 				69D2CE5E2CE5B5380096B1AD /* MemeGeneratorTests */,
 				69D2CE682CE5B5390096B1AD /* MemeGeneratorUITests */,
 				69D2CE4C2CE5B5360096B1AD /* Products */,
+				2DAF419C2CEE2E200006AA20 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -157,6 +171,11 @@
 			dependencies = (
 			);
 			name = MemeGenerator;
+			packageProductDependencies = (
+				2DAF419D2CEE2E200006AA20 /* CoreModule */,
+				2DAF419F2CEE2E200006AA20 /* ImagePickerModule */,
+				2DAF41A12CEE2E200006AA20 /* RecentProjectModule */,
+			);
 			productName = MemeGenerator;
 			productReference = 69D2CE4B2CE5B5360096B1AD /* MemeGenerator.app */;
 			productType = "com.apple.product-type.application";
@@ -604,6 +623,21 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2DAF419D2CEE2E200006AA20 /* CoreModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CoreModule;
+		};
+		2DAF419F2CEE2E200006AA20 /* ImagePickerModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ImagePickerModule;
+		};
+		2DAF41A12CEE2E200006AA20 /* RecentProjectModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RecentProjectModule;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 69D2CE432CE5B5360096B1AD /* Project object */;
 }
