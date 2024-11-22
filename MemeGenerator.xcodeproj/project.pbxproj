@@ -457,6 +457,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"MemeGenerator/Preview Content\"";
 				DEVELOPMENT_TEAM = LFKPMBHSSG;
 				ENABLE_PREVIEWS = YES;
+				EXCLUDED_ARCHS = "";
+				"EXCLUDED_ARCHS[sdk=*]" = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -487,6 +489,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"MemeGenerator/Preview Content\"";
 				DEVELOPMENT_TEAM = LFKPMBHSSG;
 				ENABLE_PREVIEWS = YES;
+				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

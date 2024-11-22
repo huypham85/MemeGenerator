@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import RecentProjectModule
 
 @main
 struct MemeGeneratorApp: App {

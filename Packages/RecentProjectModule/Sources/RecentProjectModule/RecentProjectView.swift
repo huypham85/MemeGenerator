@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct RecentProjectView: View {
+public struct RecentProjectView: View {
+    public init() {}
     private var imageList: some View {
         ForEach(0..<50, id: \.self) { _ in
             Rectangle()
@@ -22,21 +23,21 @@ struct RecentProjectView: View {
         .init(.fixed(150))
     ]
     
-    var body: some View {
-//        Image("demo")
-//            .resizable()
-//            .frame(width: 300, height: 300)
+    public var body: some View {
+        Image("bird", bundle: .module)
+            .resizable()
+            .frame(width: 300, height: 300)
 
-        ScrollView {
-            HStack(alignment: .top) {
-                LazyVGrid(columns: homeGridItems) {
-                    imageList
-                }
-                LazyVGrid(columns: homeGridItems) {
-                    imageList
-                }
-            }
-        }
+//        ScrollView {
+//            HStack(alignment: .top) {
+//                LazyVGrid(columns: homeGridItems) {
+//                    imageList
+//                }
+//                LazyVGrid(columns: homeGridItems) {
+//                    imageList
+//                }
+//            }
+//        }
     }
 }
 

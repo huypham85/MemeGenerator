@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import RecentProjectModule
 
 struct ContentView: View {
     var body: some View {
@@ -17,6 +18,7 @@ struct ContentView: View {
             Image("demo")
                 .resizable()
                 .frame(width: 300, height: 300)
+            RecentProjectView()
         }
         .padding()
     }
