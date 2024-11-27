@@ -8,7 +8,10 @@
 import SwiftUI
 
 public struct RecentProjectView: View {
-    public init() {}
+    
+    @ObservedObject var store: RecentProjectStore
+    
+    
     private var imageList: some View {
         ForEach(0..<20, id: \.self) { item in
             RecentProjectItemView()

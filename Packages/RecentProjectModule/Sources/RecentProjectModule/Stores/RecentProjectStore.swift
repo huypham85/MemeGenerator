@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import RealmSwift
 
 class RecentProjectStore: ObservableObject {
 //    var products: [Product]
@@ -42,7 +43,7 @@ class RecentProjectStore: ObservableObject {
 //    func fetchProducts() async {
 //        loadingState = .loading
 //        logger.log("Started fetching products.")
-//        
+//
 //        // Try fetching from the cache first
 //        let cachedProducts = databaseClient.fetchCachedProducts()
 //        guard cachedProducts.isEmpty else {
@@ -51,13 +52,13 @@ class RecentProjectStore: ObservableObject {
 //            logger.log("Fetched products from cache.")
 //            return
 //        }
-//        
+//
 //        do {
 //            var fetchedProducts = try await apiClient.fetchProducts()
 //            fetchedProducts = discountCalculator.applyDiscount(to: fetchedProducts)
 //            products = fetchedProducts
 //            loadingState = products.isEmpty ? .empty : .loaded(result: products)
-//            
+//
 //            // Save fetched products to the database
 //            databaseClient.saveProducts(products)
 //            logger.log("Fetched products from API and applied discounts.")
@@ -66,7 +67,7 @@ class RecentProjectStore: ObservableObject {
 //            logger.log("Error fetching products: \(error.localizedDescription).")
 //        }
 //    }
-//    
+//
 //    // This code is for demo purpuses
 //    func fetchProducts(completion: @escaping (Result<[Product], Error>) -> Void) {
 //        apiClient.fetchProducts(completion: completion)

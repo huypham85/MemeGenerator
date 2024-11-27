@@ -13,7 +13,8 @@ let package = Package(
             targets: ["RecentProjectModule"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/realm/realm-swift.git", from: "10.54.1")
+        .package(path: "../CoreModule"),
+        .package(url: "https://github.com/realm/realm-swift.git",exact: "10.54.1")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -21,8 +22,8 @@ let package = Package(
         .target(
             name: "RecentProjectModule",
             dependencies: [
-                .product(name: "Realm", package: "realm-swift"),
-                .product(name: "RealmSwift", package: "realm-swift")
+                .product(name: "RealmSwift", package: "realm-swift"),
+                "CoreModule"
             ]
         ),
         .testTarget(
