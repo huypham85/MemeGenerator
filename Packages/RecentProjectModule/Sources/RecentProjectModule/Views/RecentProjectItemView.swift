@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import CoreModule
 
 struct RecentProjectItemView: View {
+    var model: RecentProjectModel
+    
     var body: some View {
         LazyVStack(content: {
-            Image("bird", bundle: .module)
+            Image(uiImage: model.projectImage ?? UIImage())
                 .resizable()
                 .clipShape(
                     .rect(
@@ -25,10 +28,10 @@ struct RecentProjectItemView: View {
                     print("Tapped on item")
                 }
             LazyVStack(alignment: .leading, content: {
-                Text("Project Name")
+                Text(model.projectName)
                     .font(.body)
                     .lineLimit(1)
-                Text("2024 Nov 23")
+                Text("Date")
                     .font(.system(size: 14))
                     .foregroundColor(.gray)
                     .lineLimit(1)
@@ -39,5 +42,13 @@ struct RecentProjectItemView: View {
 }
 
 #Preview {
-    RecentProjectItemView()
+    RecentProjectItemView(
+        model: RecentProjectModel(
+            projectId: "1",
+            projectName: "",
+            projectCreatedDate: Date(),
+            projectModifiedDate: Date(),
+            projectImage: nil
+        )
+    )
 }

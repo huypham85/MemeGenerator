@@ -8,69 +8,36 @@
 import Foundation
 import Combine
 import RealmSwift
+import CoreModule
 
-class RecentProjectStore: ObservableObject {
-//    var products: [Product]
-    var loadingState: LoadingState = .notStarted
-        
-//    private let apiClient: APIClient
-//    private let databaseClient: DatabaseClient
-//    private let discountCalculator: DiscountCalculator
-//    private let logger: Logger
+public class RecentProjectStore: ObservableObject {
     
-//    init(
-//        apiClient: APIClient = .live,
-//        databaseClient: DatabaseClient = .live,
-//        discountCalculator: DiscountCalculator,
-//        logger: Logger
-//    ) {
-//        self.products = []
-//        self.apiClient = apiClient
-//        self.databaseClient = databaseClient
-//        self.discountCalculator = discountCalculator
-//        self.logger = logger
-//    }
+    @Published var loadingState: LoadingState = .notStarted
+    private let persistenceService: RecentProjectPersistenceService
+    
+    public init(persistenceService: RecentProjectPersistenceService) {
+        self.persistenceService = persistenceService
+    }
     
     enum LoadingState {
         case notStarted
         case loading
-        case loaded
+        case loaded(result: [RecentProjectModel])
         case empty
         case error(message: String)
     }
     
-//    @MainActor
-//    func fetchProducts() async {
-//        loadingState = .loading
-//        logger.log("Started fetching products.")
-//
-//        // Try fetching from the cache first
-//        let cachedProducts = databaseClient.fetchCachedProducts()
-//        guard cachedProducts.isEmpty else {
-//            products = cachedProducts
-//            loadingState = .loaded(result: cachedProducts)
-//            logger.log("Fetched products from cache.")
-//            return
-//        }
-//
-//        do {
-//            var fetchedProducts = try await apiClient.fetchProducts()
-//            fetchedProducts = discountCalculator.applyDiscount(to: fetchedProducts)
-//            products = fetchedProducts
-//            loadingState = products.isEmpty ? .empty : .loaded(result: products)
-//
-//            // Save fetched products to the database
-//            databaseClient.saveProducts(products)
-//            logger.log("Fetched products from API and applied discounts.")
-//        } catch {
-//            loadingState = .error(message: error.localizedDescription)
-//            logger.log("Error fetching products: \(error.localizedDescription).")
-//        }
-//    }
-//
-//    // This code is for demo purpuses
-//    func fetchProducts(completion: @escaping (Result<[Product], Error>) -> Void) {
-//        apiClient.fetchProducts(completion: completion)
-//    }
+    @MainActor
+    func fetchProjects() async {
+        loadingState = .loading
+
+        do {
+            let fetchedProjects: [RecentProjectModel] = try await persistenceService.fetchAll()
+            loadingState = fetchedProjects.isEmpty ? .empty : .loaded(result: fetchedProjects)
+            print("Fetched projects")
+        } catch {
+            loadingState = .error(message: error.localizedDescription)
+        }
+    }
     
 }
