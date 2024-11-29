@@ -14,6 +14,12 @@ struct ContentView: View {
                 .imageScale(.large)
                 .foregroundStyle(.tint)
             Text("Hello, world!")
+            LazyHStack(content: {
+                ForEach(1...10, id: \.self) { count in
+                    Image(systemName: "heart").imageScale(.medium).foregroundStyle(.tint)
+                }
+            })
+            
         }
         .padding()
     }
