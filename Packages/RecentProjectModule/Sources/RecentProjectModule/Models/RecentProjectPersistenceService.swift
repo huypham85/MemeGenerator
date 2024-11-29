@@ -20,9 +20,10 @@ public class RecentProjectPersistenceService {
     func save(_ object: RecentProjectModel) async throws {
         try await withCheckedThrowingContinuation { continuation in
             do {
+                let realm = try Realm()
                 let entity = object.translate(model: object)
-                try realm?.write {
-                    realm?.add(entity)
+                try realm.write {
+                    realm.add(entity)
                 }
                 continuation.resume()
             } catch {
@@ -32,16 +33,16 @@ public class RecentProjectPersistenceService {
     }
     
     func fetchAll() async throws -> [RecentProjectModel] {
-        return await withCheckedContinuation { continuation in
-            // Safely fetch objects or return an empty array
-            if let realm = realm {
+        try await withCheckedThrowingContinuation { continuation in
+            do {
+                let realm = try Realm()
                 let objects: [RecentProjectModel] = realm.objects(RecentProjectEntity.self)
                     .map { entity -> RecentProjectModel in
                         entity.translate()
                     }
                 continuation.resume(returning: Array(objects))
-            } else {
-                continuation.resume(returning: [RecentProjectModel]())
+            } catch {
+                continuation.resume(throwing: error)
             }
         }
     }
@@ -49,9 +50,10 @@ public class RecentProjectPersistenceService {
     func delete(_ object: RecentProjectModel) async throws {
         try await withCheckedThrowingContinuation { continuation in
             do {
+                let realm = try Realm()
                 let entity = object.translate(model: object)
-                try realm?.write {
-                    realm?.delete(entity)
+                try realm.write {
+                    realm.delete(entity)
                 }
                 continuation.resume()
             } catch {

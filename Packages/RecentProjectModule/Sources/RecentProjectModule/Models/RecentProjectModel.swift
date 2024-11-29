@@ -8,7 +8,9 @@
 import Foundation
 import UIKit
 
-public struct RecentProjectModel {
+public struct RecentProjectModel: Identifiable {
+    public var id: String { projectId }
+    
     let projectId: String
     let projectName: String
     let projectCreatedDate: Date

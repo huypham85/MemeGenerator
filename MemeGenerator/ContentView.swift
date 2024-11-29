@@ -18,7 +18,7 @@ struct ContentView: View {
             Image("demo")
                 .resizable()
                 .frame(width: 300, height: 300)
-            RecentProjectView(store: RecentProjectStore(persistenceService: RecentProjectPersistenceService()))
+            RecentProjectView(store: RecentProjectStore())
         }
         .padding()
     }

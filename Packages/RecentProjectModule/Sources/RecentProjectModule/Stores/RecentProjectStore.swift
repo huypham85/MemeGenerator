@@ -5,17 +5,18 @@
 //  Created by Huy Pham on 26/11/24.
 //
 
-import Foundation
 import Combine
-import RealmSwift
 import CoreModule
+import Foundation
+import RealmSwift
 
 public class RecentProjectStore: ObservableObject {
-    
     @Published var loadingState: LoadingState = .notStarted
     private let persistenceService: RecentProjectPersistenceService
     
-    public init(persistenceService: RecentProjectPersistenceService) {
+    public init(
+        persistenceService: RecentProjectPersistenceService = RecentProjectPersistenceService()
+    ) {
         self.persistenceService = persistenceService
     }
     
@@ -30,7 +31,7 @@ public class RecentProjectStore: ObservableObject {
     @MainActor
     func fetchProjects() async {
         loadingState = .loading
-
+        
         do {
             let fetchedProjects: [RecentProjectModel] = try await persistenceService.fetchAll()
             loadingState = fetchedProjects.isEmpty ? .empty : .loaded(result: fetchedProjects)
@@ -39,5 +40,4 @@ public class RecentProjectStore: ObservableObject {
             loadingState = .error(message: error.localizedDescription)
         }
     }
-    
 }
