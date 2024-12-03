@@ -14,15 +14,6 @@ public struct RecentProjectView: View {
         self.store = store
     }
     
-    //    private var imageList: some View {
-    //        ForEach(0..<20, id: \.self) { item in
-    //            RecentProjectItemView()
-    //                .onTapGesture {
-    //                    handleTap(item: item)
-    //                }
-    //        }
-    //    }
-    
     private func handleTap(item: Int) {
         print("Tapped on item \(item)")
         // Perform additional actions as needed
@@ -70,7 +61,6 @@ public struct RecentProjectView: View {
                         Text("Error: \(message)")
                     }
                 }
-                .padding(.init(top: 8, leading: 8, bottom: 0, trailing: 8))
                 VStack {
                     Spacer()
                     HStack {
@@ -81,6 +71,7 @@ public struct RecentProjectView: View {
             })
         }
         .task {
+            await store.saveProject(RecentProjectModel(projectId: UUID().uuidString, projectName: "project1", projectCreatedDate: Date(), projectModifiedDate: Date(), projectImage: UIImage(named: "demo")))
             await store.fetchProjects()
         }
     }

@@ -11,13 +11,6 @@ import RecentProjectModule
 struct ContentView: View {
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-            Image("demo")
-                .resizable()
-                .frame(width: 300, height: 300)
             RecentProjectView(store: RecentProjectStore())
         }
         .padding()

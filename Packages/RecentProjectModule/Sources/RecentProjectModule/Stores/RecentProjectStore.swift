@@ -29,6 +29,16 @@ public class RecentProjectStore: ObservableObject {
     }
     
     @MainActor
+    func saveProject(_ object: RecentProjectModel) async {
+        do {
+            try await persistenceService.save(object)
+            print("saved projects")
+        } catch {
+            loadingState = .error(message: error.localizedDescription)
+        }
+    }
+    
+    @MainActor
     func fetchProjects() async {
         loadingState = .loading
         
