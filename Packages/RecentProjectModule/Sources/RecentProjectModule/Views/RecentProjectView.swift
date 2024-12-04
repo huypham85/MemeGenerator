@@ -9,23 +9,15 @@ import SwiftUI
 
 public struct RecentProjectView: View {
     @ObservedObject var store: RecentProjectStore
-    
+    @State private var showingOptions = false
     public init(store: RecentProjectStore) {
         self.store = store
     }
     
-    private func handleTap(item: Int) {
-        print("Tapped on item \(item)")
-        // Perform additional actions as needed
-    }
-    
-    private var homeGridItems: [GridItem] = [
-        .init(.flexible())
-    ]
-    
     // Floating button
     private var addButton: some View {
         Button(action: {
+            showingOptions.toggle()
             print("Circular button tapped!")
         }) {
             Text("+")
@@ -37,7 +29,6 @@ public struct RecentProjectView: View {
                 .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 5)
         }
     }
-    
     
     public var body: some View {
         ZStack {
@@ -61,18 +52,53 @@ public struct RecentProjectView: View {
                         Text("Error: \(message)")
                     }
                 }
-                VStack {
-                    Spacer()
-                    HStack {
-                        Spacer()
-                        addButton
-                    }
-                }
             })
+            
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    addButton
+                }
+            }
         }
         .task {
-            await store.saveProject(RecentProjectModel(projectId: UUID().uuidString, projectName: "project1", projectCreatedDate: Date(), projectModifiedDate: Date(), projectImage: UIImage(named: "demo")))
+            //            await store.saveProject(RecentProjectModel(projectId: UUID().uuidString, projectName: "project1", projectCreatedDate: Date(), projectModifiedDate: Date(), projectImage: UIImage(named: "demo")))
             await store.fetchProjects()
+        }
+        .sheet(isPresented: $showingOptions) {
+            VStack(alignment: .leading) {
+                HStack {
+                    Button(action: {
+                        print("Tap on gallery")
+                    }) {
+                        HStack {
+                            Image(systemName: "photo")
+                            Text("Gallery")
+                        }
+                    }
+                    Spacer()
+                }
+                .padding()
+                
+                HStack {
+                    Button(action: {
+                        print("Tap on top memes")
+                    }) {
+                        HStack {
+                            Image(systemName: "star")
+                            Text("Top Memes")
+                        }
+                    }
+                    Spacer()
+                }
+                .padding()
+                
+                Spacer() // Ensures the content stretches to fill the height
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity) // Ensures full space usage
+            .background(Color.gray.opacity(0.1)) // Optional background
+            .presentationDetents([.fraction(0.15)]) // Sets the sheet height to 15% of the screen
         }
     }
 }

@@ -11,7 +11,7 @@ public struct RecentProjectsGridView: View {
     let result: [RecentProjectModel]
     let onProjectTap: (RecentProjectModel) -> Void
 
-    private let homeGridItems = [GridItem(.flexible()), GridItem(.flexible())]
+    private let homeGridItems = [GridItem(.flexible())]
 
     public var body: some View {
         ScrollView {

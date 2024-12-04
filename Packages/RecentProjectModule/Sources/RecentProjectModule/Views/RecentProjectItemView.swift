@@ -9,7 +9,9 @@ import SwiftUI
 import CoreModule
 
 struct RecentProjectItemView: View {
+    
     var model: RecentProjectModel
+    private let itemWidth = (UIScreen.main.bounds.width / 2) - 20
     
     var body: some View {
         LazyVStack(content: {
@@ -23,7 +25,11 @@ struct RecentProjectItemView: View {
                         topTrailingRadius: 20
                     )
                 )
-                .frame(width: 180, height: CGFloat.random(in: 180...300), alignment: .center)
+                .frame(
+                    width: itemWidth,
+                    height: min(model.projectImage?.size.height ?? 300, 300),
+                    alignment: .center
+                )
                 .onTapGesture {
                     print("Tapped on item")
                 }
@@ -31,12 +37,12 @@ struct RecentProjectItemView: View {
                 Text(model.projectName)
                     .font(.body)
                     .lineLimit(1)
-                Text("Date")
+                Text(model.projectModifiedDate.toShortDateString())
                     .font(.system(size: 14))
                     .foregroundColor(.gray)
                     .lineLimit(1)
             })
-            .frame(width: 180)
+            .frame(width: itemWidth)
         })
     }
 }
